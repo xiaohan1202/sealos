@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: infra-ami-config
+  namespace: infra-system
+data:
+#  machine with sealos
+  amazon-linux: "ami-048280a00d5085dd1"
+  ubuntu: "ami-072370b4c0664c740"
+  lower-limit: "8"
+#  GPU machine
+  ubuntu-GPU: "ami-00c3365284ff0b28f"
+  lower-limit-GPU: "45"
+immutable: true
+
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: Role
+#metadata:
+#  namespace: sealos-system
+#  name: role-account-0ffc5a5d-12c3-4e3c-a71f-58abbb50047c
+#rules:
+#  - apiGroups: ["user.sealos.io"] # "" 标明 core API 组
+#    resources: ["accounts"]
+#    verbs: ["get", "watch", "list"]
+#    resourceNames: ["0ffc5a5d-12c3-4e3c-a71f-58abbb50047c"]
+#
+#apiVersion: rbac.authorization.k8s.io/v1
+#kind: RoleBinding
+#metadata:
+#  name: read-accounts-0ffc5a5d-12c3-4e3c-a71f-58abbb50047c
+#  namespace: sealos-system
+#subjects:
+#  - kind: User
+#    name: 0ffc5a5d-12c3-4e3c-a71f-58abbb50047c # "name" 是区分大小写的
+#    apiGroup: rbac.authorization.k8s.io
+#roleRef:
+#  kind: Role        # 此字段必须是 Role 或 ClusterRole
+#  name: role-account-0ffc5a5d-12c3-4e3c-a71f-58abbb50047c  # 此字段必须与你要绑定的 Role 或 ClusterRole 的名称匹配
+#  apiGroup: rbac.authorization.k8s.io
